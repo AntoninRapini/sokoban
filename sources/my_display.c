@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:05:57 2016 Antonin Rapini
-** Last update Fri Dec 16 16:43:11 2016 Antonin Rapini
+** Last update Fri Dec 16 16:55:40 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
@@ -24,16 +24,18 @@ int	my_gameloop(t_game *game)
   playing = 1;
   while (playing)
     {
-      my_show_game(game->map, game->lines, game->columns);
-      key = getch();
-      if (move_player(game, (key == KEY_DOWN) - (key == KEY_UP)
-		      , (key == KEY_RIGHT) - (key == KEY_LEFT)))
+      if (my_show_game(game->map, game->lines, game->columns))
 	{
-	  endwin();
-	  playing = 0;
+	  key = getch();
+	  if (move_player(game, (key == KEY_DOWN) - (key == KEY_UP)
+			  , (key == KEY_RIGHT) - (key == KEY_LEFT)))
+	    {
+	      endwin();
+	      playing = 0;
+	    }
+	  if (key == ' ')
+	    return (1);
 	}
-      if (key == ' ')
-	return (1);
     }
   return (0);
 }
@@ -45,6 +47,7 @@ int		my_display(t_game *game)
   playing = 1;
   newgame = my_copygame(game);
   initscr();
+  noecho();
   keypad(stdscr, TRUE);
   while (playing)
     {

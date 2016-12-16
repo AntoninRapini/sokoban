@@ -5,16 +5,16 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:04:02 2016 Antonin Rapini
-** Last update Fri Dec 16 15:25:44 2016 Antonin Rapini
+** Last update Fri Dec 16 17:00:06 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
 #include "utils.h"
 #include "sources.h"
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-  t_game *game;
+  t_game	*game;
 
   if (ac >= 2)
     {
