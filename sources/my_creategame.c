@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec 15 23:21:37 2016 Antonin Rapini
-** Last update Thu Dec 15 23:27:57 2016 Antonin Rapini
+** Last update Fri Dec 16 15:12:39 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -23,5 +23,6 @@ t_game		*my_creategame()
   game->player.y = 0;
   game->boxcount = 0;
   game->storagecount = 0;
+  game->boxesplaced = 0;
   return (game);
 }

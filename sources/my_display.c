@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:05:57 2016 Antonin Rapini
-** Last update Fri Dec 16 00:05:35 2016 Antonin Rapini
+** Last update Fri Dec 16 15:29:52 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
@@ -15,10 +15,10 @@
 #include <sources.h>
 #include <gameplay.h>
 
-void my_display(t_game *game)
+int	my_display(t_game *game)
 {
-  int playing;
-  int key;
+  int	playing;
+  int	key;
 
   key = 0;
   playing = 1;
@@ -28,8 +28,13 @@ void my_display(t_game *game)
     {
       my_show_game(game->map, game->lines, game->columns);
       key = getch();
-      move_player(game, (key == KEY_DOWN) - (key == KEY_UP)
-		  , (key == KEY_RIGHT) - (key == KEY_LEFT));
+      if (move_player(game, (key == KEY_DOWN) - (key == KEY_UP)
+		      , (key == KEY_RIGHT) - (key == KEY_LEFT)))
+	{
+	  endwin();
+	  return (0);
+	}
     }
   endwin();
+  return (1);
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:13:57 2016 Antonin Rapini
-** Last update Thu Dec 15 23:33:36 2016 Antonin Rapini
+** Last update Fri Dec 16 15:27:45 2016 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -13,7 +13,7 @@
 
 #include "my_game.h"
 
-void	my_display(t_game *);
-void	move_player(t_game *, int, int);
+int	my_display(t_game *);
+int	move_player(t_game *, int, int);
 t_game	*my_creategame();
 #endif /* !SOURCES_H_ */

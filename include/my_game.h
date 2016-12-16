@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Dec  4 22:28:56 2016 Antonin Rapini
-** Last update Thu Dec 15 21:19:11 2016 Antonin Rapini
+** Last update Fri Dec 16 15:12:15 2016 Antonin Rapini
 */
 
 #ifndef MY_GAME_H_
@@ -29,6 +29,7 @@ typedef struct	s_game
   t_object	*storage;
   int		boxcount;
   int		storagecount;
+  int		boxesplaced;
 }		t_game;
 
 #endif /* !MY_GAME_H_ */
