@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 22:55:22 2016 Antonin Rapini
-** Last update Fri Dec 16 15:20:58 2016 Antonin Rapini
+** Last update Fri Dec 16 19:29:17 2016 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -48,7 +48,7 @@ int	move_player(t_game *game, int y, int x)
 {
   int	movetype;
 
-  movetype = my_canmove(game->map, y, x, game->player);
+  movetype = my_canmove(game, y, x, game->player);
   if (movetype == 1)
     simple_move(game, y, x);
   else if (movetype == 2)

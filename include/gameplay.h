@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:13:57 2016 Antonin Rapini
-** Last update Fri Dec 16 15:22:56 2016 Antonin Rapini
+** Last update Fri Dec 16 19:29:28 2016 Antonin Rapini
 */
 
 #ifndef GAMEPLAY_H_
@@ -14,7 +14,7 @@
 #include "my_game.h"
 
 int	move_player(t_game *, int, int);
-int	my_canmove(char **, int, int, t_object);
+int	my_canmove(t_game *, int, int, t_object);
 int	my_isonstorage(t_object, t_object *, int);
 int	my_checkwin(t_game *);
 
