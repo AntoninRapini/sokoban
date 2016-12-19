@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:21:08 2016 Antonin Rapini
-** Last update Tue Dec 13 22:52:31 2016 Antonin Rapini
+** Last update Mon Dec 19 16:11:14 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -18,7 +18,7 @@
 #include "utils.h"
 #include <stdio.h>
 
-int	my_get_linecount(int fd)
+int	my_get_linecount(int fd, int *total)
 {
   int	size;
   int	lines;
@@ -34,6 +34,7 @@ int	my_get_linecount(int fd)
       buffer[size] = '\0';
       while (buffer[i])
 	{
+	  (*total)++;
 	  if (buffer[i] == '\n')
 	    lines++;
 	  i++;
@@ -46,12 +47,14 @@ t_game	*my_getfileinfos(char *file)
 {
   int		fd;
   int		lines;
+  int		total;
 
+  total = 0;
   if ((fd = open(file, O_RDONLY)) == -1)
     return (NULL);
-  lines = my_get_linecount(fd);
+  lines = my_get_linecount(fd, &total);
   close(fd);
   if (lines == 0)
     return (NULL);
-  return (my_file_togame(lines, file));
+  return (my_file_togame(lines, file, total));
 }

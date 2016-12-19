@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:14:52 2016 Antonin Rapini
-** Last update Fri Dec 16 00:23:07 2016 Antonin Rapini
+** Last update Mon Dec 19 16:33:31 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -72,39 +72,53 @@ void	my_getmapinfos(t_game *game)
   my_storemapinfos(game, 0, 0);
 }
 
-void		my_fillmap(FILE *file, t_game *game)
+void		my_fillmap(char *file, t_game *game)
 {
   int		i;
+  int		old_i;
   int		j;
-  size_t	size;
+  int		k;
 
-  size = 0;
+  j = 0;
+  k = 0;
+  old_i = 0;
   i = 0;
-  while (i < game->lines)
+  while (file[i])
     {
-      j = 0;
-      game->map[i] = malloc(sizeof(char) * size);;
-      getline(&(game->map[i]), &size, file);
-      while (game->map[i][j])
-	j++;
-      if (j > game->columns)
-	game->columns = j;
+      if (file[i] == '\n')
+	{
+	  k = 0;
+	  game->map[j] = malloc(sizeof(char) * (i + 1 - old_i + 1));
+	  game->map[j][i + 1- old_i] = '\0';
+	  while (old_i <= i)
+	    {
+	      game->map[j][k] = file[old_i];
+	      old_i++;
+	      k++;
+	    }
+	  j++;
+	  
+	}
       i++;
     }
   my_getmapinfos(game);
 }
 
-t_game		*my_file_togame(int lines, char *filename)
+t_game		*my_file_togame(int lines, char *filename, int filesize)
 {
-  FILE		*file;
+  int		fd;
   t_game	*game;
+  char		*buffer;
 
+  buffer = malloc(sizeof(char) * filesize + 1);
   if ((game = my_creategame()) == NULL)
     return (NULL);
   if ((game->map = malloc(sizeof(char *) * lines)) == NULL)
     return (NULL);
-  file = fopen(filename, "r+");
+  fd = open(filename, O_RDONLY);
+  read(fd, buffer, filesize);
+  buffer[filesize] = '\0';
   game->lines = lines;
-  my_fillmap(file, game);
+  my_fillmap(buffer, game);
   return (game);
 }

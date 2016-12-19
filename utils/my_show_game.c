@@ -6,7 +6,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Nov 25 10:31:50 2016 Antonin Rapini
-** Last update Fri Dec 16 16:58:58 2016 Antonin Rapini
+** Last update Mon Dec 19 16:16:14 2016 Antonin Rapini
 */
 
 #include "utils.h"
@@ -17,11 +17,12 @@ int	my_show_game(char **map, int lines, int columns)
   int	i;
 
   i = 0;
-  if (lines <= LINES && columns <= COLS)
+  if (columns){}
+  if (lines <= LINES)
     {
       while (i < lines)
 	{
-	  mvprintw((LINES / 2) + i - lines / 2, COLS / 2 - columns / 2, map[i]);
+	  mvprintw((LINES / 2) + i - lines / 2, COLS / 2, map[i]);
 	  i++;
 	}
       refresh();

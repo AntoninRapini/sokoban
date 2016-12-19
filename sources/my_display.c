@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:05:57 2016 Antonin Rapini
-** Last update Fri Dec 16 16:55:40 2016 Antonin Rapini
+** Last update Mon Dec 19 16:33:42 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
