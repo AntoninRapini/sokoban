@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:05:57 2016 Antonin Rapini
-** Last update Mon Dec 19 18:42:56 2016 Antonin Rapini
+** Last update Mon Dec 19 19:24:54 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
@@ -14,29 +14,44 @@
 #include <sources.h>
 #include <gameplay.h>
 
+void		my_checksize(t_game *game)
+{
+  static int	old_cols = 0;
+  static int	old_lines = 0;
+
+  if (old_cols != COLS || old_lines != LINES)
+    {
+      old_cols = COLS;
+      old_lines = LINES;
+      my_show_game(game->map, game->lines, game->columns);
+    }
+}
+
+int my_getkeypress(t_game *game, int key)
+{
+  if (key == ' ')
+    return (-1);
+  return (move_player(game, key));
+}
+
 int	my_gameloop(t_game *game)
 {
   int	playing;
-  int	key;
   int	movestatus;
 
   movestatus = 0;
-  key = 0;
   playing = 1;
   my_show_game(game->map, game->lines, game->columns);
   while (playing)
     {
-      key = getch();
-      if (key == ' ')
+      movestatus = my_getkeypress(game, getch());
+      if (movestatus == -1)
 	return (1);
-      movestatus = move_player(game,key);
-      if (movestatus == 1)
-	{
-	  endwin();
-	  playing = 0;
-	}
+      else if (movestatus == 1)
+	return (0);
       else if (movestatus == 2)
 	my_show_game(game->map, game->lines, game->columns);
+      my_checksize(game);
     }
   return (0);
 }
@@ -61,5 +76,6 @@ int		my_display(t_game *game)
 	  newgame = my_copygame(game);
 	}
     }
+  endwin();
   return (0);
 }
