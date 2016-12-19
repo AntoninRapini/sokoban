@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 22 13:20:38 2016 Antonin Rapini
-** Last update Mon Dec 19 16:10:59 2016 Antonin Rapini
+** Last update Mon Dec 19 18:03:01 2016 Antonin Rapini
 */
 
 #ifndef UTILS_H_
@@ -23,5 +23,7 @@ int	my_show_game(char **, int, int);
 int	my_nbrlen(int);
 char	*my_strdup(char *);
 char	**my_strarraycpy(char **, int);
+void	my_fillmap(char *, t_game *);
+void	my_getmapinfos(t_game *);
 
 #endif /* !UTILS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Oct 12 18:40:56 2016 Antonin Rapini
-** Last update Fri Dec 16 16:45:13 2016 Antonin Rapini
+** Last update Mon Dec 19 18:45:40 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -17,7 +17,8 @@ char	*my_strdup(char *src)
   int	i;
 
   i = my_strlen(src);
-  dest = malloc(sizeof(char) * (i + 1));
+  if ((dest = malloc(sizeof(char) * (i + 1))) == NULL)
+    exit(84);
   dest[i] = '\0';
   i = 0;
   while (src[i])

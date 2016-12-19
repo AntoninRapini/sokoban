@@ -5,18 +5,15 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:21:08 2016 Antonin Rapini
-** Last update Mon Dec 19 16:11:14 2016 Antonin Rapini
+** Last update Mon Dec 19 18:49:02 2016 Antonin Rapini
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "sources.h"
 #include "my_game.h"
 #include "utils.h"
-#include <stdio.h>
 
 int	my_get_linecount(int fd, int *total)
 {

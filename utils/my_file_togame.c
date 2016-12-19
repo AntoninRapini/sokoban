@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:14:52 2016 Antonin Rapini
-** Last update Mon Dec 19 16:33:31 2016 Antonin Rapini
+** Last update Mon Dec 19 18:07:31 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -67,41 +67,11 @@ void	my_getmapinfos(t_game *game)
 	    game->boxcount++;
 	  j++;
 	}
+      if (j > game->columns)
+	game->columns = j;
       i++;
     }
   my_storemapinfos(game, 0, 0);
-}
-
-void		my_fillmap(char *file, t_game *game)
-{
-  int		i;
-  int		old_i;
-  int		j;
-  int		k;
-
-  j = 0;
-  k = 0;
-  old_i = 0;
-  i = 0;
-  while (file[i])
-    {
-      if (file[i] == '\n')
-	{
-	  k = 0;
-	  game->map[j] = malloc(sizeof(char) * (i + 1 - old_i + 1));
-	  game->map[j][i + 1- old_i] = '\0';
-	  while (old_i <= i)
-	    {
-	      game->map[j][k] = file[old_i];
-	      old_i++;
-	      k++;
-	    }
-	  j++;
-	  
-	}
-      i++;
-    }
-  my_getmapinfos(game);
 }
 
 t_game		*my_file_togame(int lines, char *filename, int filesize)
@@ -110,7 +80,8 @@ t_game		*my_file_togame(int lines, char *filename, int filesize)
   t_game	*game;
   char		*buffer;
 
-  buffer = malloc(sizeof(char) * filesize + 1);
+  if ((buffer = malloc(sizeof(char) * filesize + 1)) == NULL)
+    return (NULL);
   if ((game = my_creategame()) == NULL)
     return (NULL);
   if ((game->map = malloc(sizeof(char *) * lines)) == NULL)

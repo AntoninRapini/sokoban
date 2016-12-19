@@ -5,13 +5,12 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 17:05:57 2016 Antonin Rapini
-** Last update Mon Dec 19 16:40:43 2016 Antonin Rapini
+** Last update Mon Dec 19 18:42:56 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
 #include "my_game.h"
 #include "utils.h"
-#include <stdio.h>
 #include <sources.h>
 #include <gameplay.h>
 
@@ -19,22 +18,25 @@ int	my_gameloop(t_game *game)
 {
   int	playing;
   int	key;
+  int	movestatus;
 
+  movestatus = 0;
   key = 0;
   playing = 1;
+  my_show_game(game->map, game->lines, game->columns);
   while (playing)
     {
-      if (my_show_game(game->map, game->lines, game->columns))
+      key = getch();
+      if (key == ' ')
+	return (1);
+      movestatus = move_player(game,key);
+      if (movestatus == 1)
 	{
-	  key = getch();
-	  if (move_player(game, key))
-	    {
-	      endwin();
-	      playing = 0;
-	    }
-	  if (key == ' ')
-	    return (1);
+	  endwin();
+	  playing = 0;
 	}
+      else if (movestatus == 2)
+	my_show_game(game->map, game->lines, game->columns);
     }
   return (0);
 }
