@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Dec 16 16:32:30 2016 Antonin Rapini
-** Last update Fri Dec 16 16:38:17 2016 Antonin Rapini
+** Last update Tue Dec 20 16:11:03 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -22,5 +22,7 @@ void	my_freegame(t_game *game)
       i++;
     }
   free(game->map);
+  free(game->boxes);
+  free(game->storage);
   free(game);
 }
