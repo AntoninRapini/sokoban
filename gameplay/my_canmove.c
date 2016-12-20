@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec 15 23:41:29 2016 Antonin Rapini
-** Last update Tue Dec 20 15:38:19 2016 Antonin Rapini
+** Last update Tue Dec 20 18:29:27 2016 Antonin Rapini
 */
 
 #include "my_game.h"
@@ -15,7 +15,8 @@ int my_isvalidboxpos(t_game *g, int y, int x)
 {
   if (y < 0 || x < 0 || y >= g->lines || g->map[y][x] == 0
       || (g->map[y][x] != ' ' && g->map[y][x] != 'O')
-      || (g->map[y][x] == 'O' && my_isboxhere(x, y, g->boxes, g->boxcount)))
+      || (g->map[y][x] == 'O'
+	  && my_isboxhere(x, y, g->boxes, g->boxcount)))
     return (0);
   return (1);
 }

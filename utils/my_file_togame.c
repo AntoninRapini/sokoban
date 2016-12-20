@@ -5,13 +5,12 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:14:52 2016 Antonin Rapini
-** Last update Mon Dec 19 18:07:31 2016 Antonin Rapini
+** Last update Tue Dec 20 18:36:01 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "utils.h"
 #include "my_game.h"
 #include "sources.h"

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Dec  3 20:21:08 2016 Antonin Rapini
-** Last update Mon Dec 19 18:49:02 2016 Antonin Rapini
+** Last update Tue Dec 20 18:35:32 2016 Antonin Rapini
 */
 
 #include <fcntl.h>
@@ -42,9 +42,9 @@ int	my_get_linecount(int fd, int *total)
 
 t_game	*my_getfileinfos(char *file)
 {
-  int		fd;
-  int		lines;
-  int		total;
+  int	fd;
+  int	lines;
+  int	total;
 
   total = 0;
   if ((fd = open(file, O_RDONLY)) == -1)
