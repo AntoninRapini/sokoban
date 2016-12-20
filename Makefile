@@ -5,11 +5,11 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Tue Dec 20 16:12:41 2016 Antonin Rapini
+## Last update Tue Dec 20 23:03:20 2016 Antonin Rapini
 ##
 
-CFLAGS	+= -Wall -Werror -Wextra
-CFLAGS 	+= -I include
+CFLAGS	+=	-Wall -Werror -Wextra
+CFLAGS 	+=	-I include
 
 SRC	=	utils/my_nbrlen.c		\
 		utils/my_getnbr.c		\
