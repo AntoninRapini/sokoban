@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Dec 13 22:55:22 2016 Antonin Rapini
-** Last update Mon Dec 19 18:46:52 2016 Antonin Rapini
+** Last update Tue Dec 20 15:56:55 2016 Antonin Rapini
 */
 
 #include <ncurses.h>
@@ -27,13 +27,10 @@ int push_move(t_game *game, int y, int x)
 {
   game->map[game->player.y + y][game->player.x + x] = 'P';
   if (game->map[game->player.y + y * 2][game->player.x + x * 2] == 'O')
-    {
-      game->map[game->player.y + y * 2][game->player.x + x * 2] = 'A';
-      if (my_checkwin(game))
-	return (1);
-    }
-  else
-    game->map[game->player.y + y * 2][game->player.x + x * 2] = 'X';
+    game->boxesplaced++;
+  game->map[game->player.y + y * 2][game->player.x + x * 2] = 'X';
+  my_movebox(my_getbox(game->player.x + x, game->player.y + y, game),
+	     game->player.x + (x * 2), game->player.y + (y * 2));
   if (my_isonstorage(game->player, game->storage, game->storagecount))
     game->map[game->player.y][game->player.x] = 'O';
   else
@@ -42,6 +39,8 @@ int push_move(t_game *game, int y, int x)
   game->player.x += x;
   if (my_isonstorage(game->player, game->storage, game->storagecount))
     game->boxesplaced--;
+  if (my_checkwin(game))
+    return (1);
   return (0);
 }
 

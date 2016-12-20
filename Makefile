@@ -5,7 +5,7 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Mon Dec 19 18:03:18 2016 Antonin Rapini
+## Last update Tue Dec 20 14:06:45 2016 Antonin Rapini
 ##
 
 CFLAGS	+= -Wall -Werror -Wextra
@@ -29,6 +29,9 @@ SRC	=	utils/my_nbrlen.c		\
 		gameplay/move_player.c		\
 		gameplay/my_canmove.c		\
 		gameplay/my_isonstorage.c	\
+		gameplay/my_isboxhere.c		\
+		gameplay/my_movebox.c		\
+		gameplay/my_getbox.c		\
 		my_sokoban.c
 
 OBJ	=	$(SRC:.c=.o)
